@@ -1,11 +1,19 @@
 import cv2
 import numpy as np
+import os
 from sklearn.metrics.pairwise import cosine_similarity
 from feature_extractor import get_image_from_url, model as feature_model
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.preprocessing import image as keras_image
 
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
+cascade_path = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+
+print("Cascade path:", cascade_path)
+print("File exists:", os.path.exists(cascade_path))
+
+face_cascade = cv2.CascadeClassifier(cascade_path)
+
+print("Cascade empty:", face_cascade.empty())
 MATCH_THRESHOLD = 0.75
 
 def get_embedding_from_crop(crop_img):

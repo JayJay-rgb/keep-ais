@@ -9,7 +9,7 @@ from io import BytesIO
 model = MobileNetV2(weights="imagenet", include_top=False, pooling="avg")
 
 def get_image_from_url(url):
-    response = requests.get(url, timeout=10)
+    response = requests.get(url, timeout=(10, 30))
     img = Image.open(BytesIO(response.content)).convert("RGB")
     img = img.resize((224, 224))
     return img
