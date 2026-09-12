@@ -18,20 +18,21 @@ def download_np_image(url):
     return np.array(img)
 
 def analyze_emotions(image_url):
-    if not FER_AVAILABLE:
-        return None
+    # if not FER_AVAILABLE:
+    #     return None
 
-    img = download_np_image(image_url)
-    results = detector.detect_emotions(img)
+    # img = download_np_image(image_url)
+    # results = detector.detect_emotions(img)
 
-    if not results:
-        return None
+    # if not results:
+    #     return None
 
-    combined = {}
-    for face in results:
-        for emotion, score in face["emotions"].items():
-            combined[emotion] = combined.get(emotion, 0) + score
+    # combined = {}
+    # for face in results:
+    #     for emotion, score in face["emotions"].items():
+    #         combined[emotion] = combined.get(emotion, 0) + score
 
-    face_count = len(results)
-    averaged = {k: round(v / face_count, 3) for k, v in combined.items()}
-    return averaged
+    # face_count = len(results)
+    # averaged = {k: round(v / face_count, 3) for k, v in combined.items()}
+    # return averaged
+    return None
